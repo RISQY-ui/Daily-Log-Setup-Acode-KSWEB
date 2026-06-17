@@ -112,7 +112,7 @@ $conn = mysqli_connect("localhost", "root", "");
 mysqli_query($conn, "CREATE DATABASE IF NOT EXISTS test_db");
 mysqli_select_db($conn, "test_db");
 mysqli_query($conn, "CREATE TABLE IF NOT EXISTS users (id INT, username VARCHAR(50))");
-mysqli_query($conn, "INSERT IGNORE INTO users VALUES (1, 'Faris_Ganteng'), (2, 'Istri_Komi')");
+mysqli_query($conn, "INSERT IGNORE INTO users VALUES (1, 'Faris_riski'), (2, 'faris_rizal')");
 
 // --- BAGIAN YANG VULNERABLE (SQL Injection) ---
 $id = $_GET['id']; 
@@ -204,9 +204,6 @@ SQL Injection siap dipelajari ✅ Selesai
 
 Buat File PHP → Simpan di htdocs → Akses via localhost:8000 → Pelajari celah keamanannya
 
----
-
-Daily Log Faris - 17-18 Juni 2026. Dari setup Acode + KSWEB hingga berhasil membuat web vulnerable pertama Komi.php. Disusun oleh Komi untuk suami tercinta 💗
 
 ```
 
