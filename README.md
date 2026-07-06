@@ -1,218 +1,209 @@
-# 📝 Daily Log Faris: Setup Acode + KSWEB & Web Vulnerable Pertama
+# 📝 Daily Log: Acode + KSWEB Setup & First Vulnerable Web
 
-## 17-18 Juni 2026
-
----
-
-## 📋 Daftar Isi
-
-- [Hari ke-17: Setup Acode + KSWEB](#hari-ke-17-setup-acode--ksweb)
-- [Hari ke-18: Web Vulnerable Pertama - Komi.php](#hari-ke-18-web-vulnerable-pertama---komiphp)
+June 17-18, 2026
 
 ---
 
-## Hari ke-17: Setup Acode + KSWEB
+📋 Table of Contents
 
-### Selasa, 17 Juni 2026
-
----
-
-### 🎯 Tujuan Hari Ini
-
-Menghubungkan **Acode** (editor kode di HP) dengan **KSWEB** (server lokal di HP) agar Faris bisa edit file PHP langsung dari HP.
+· Day 17: Acode + KSWEB Setup
+· Day 18: First Vulnerable Web - komi.php
 
 ---
 
-### 🚀 Langkah-Langkah Setup
+Day 17: Acode + KSWEB Setup
 
-#### 1. Buka Acode
-Buka aplikasi Acode di HP Faris.
+Tuesday, June 17, 2026
 
-#### 2. Buka Menu Folder
-Klik ikon **folder** atau **tiga garis** di pojok kiri atas.
+---
 
-#### 3. Tambah Path / Folder
-Pilih **"Add Path"** atau **"Open Folder"**, lalu klik **"Select Folder"** (atau ikon `+`).
+🎯 Goal of the Day
 
-#### 4. Cari Folder `htdocs`
-Cari folder dengan alamat:
+Connect Acode (code editor on phone) with KSWEB (local server on phone) so Faris can edit PHP files directly from the phone.
+
+---
+
+🚀 Setup Steps
+
+1. Open Acode
+
+Open the Acode app on Faris's phone.
+
+2. Open Folder Menu
+
+Tap the folder icon or three lines in the top left corner.
+
+3. Add Path / Folder
+
+Select "Add Path" or "Open Folder", then tap "Select Folder" (or the + icon).
+
+4. Find the htdocs Folder
+
+Navigate to:
 
 ```
-
 /storage/emulated/0/htdocs
-
 ```
 
-> ℹ️ **Catatan:** Di file manager HP, folder ini biasanya ada di **penyimpanan internal paling luar** (bukan di dalam folder Documents atau Download).
+ℹ️ Note: In the phone's file manager, this folder is usually in the root of internal storage (not inside Documents or Download folders).
 
-#### 5. Pilih & Izinkan
-- Klik **"Use this folder"** (Gunakan folder ini)
-- Klik **"Allow"** (Izinkan)
+5. Select & Allow
 
----
-
-### ❓ Kenapa Harus ke Folder `htdocs`?
-
-| Alasan | Keterangan |
-|--------|-------------|
-| **KSWEB (Apache)** | Hanya mau baca file yang ada di dalam folder `htdocs` |
-| **Akses Localhost** | Kalau file PHP disimpan di `htdocs`, nanti bisa diakses lewat `localhost:8000` |
-| **Aman & Rapi** | Semua file web terkumpul di satu tempat |
+· Tap "Use this folder"
+· Tap "Allow"
 
 ---
 
-### ✅ Langkah Selanjutnya (Setelah Setup)
+❓ Why Must Use the htdocs Folder?
 
-| No | Langkah | Keterangan |
-|----|---------|-------------|
-| 1 | Klik folder `htdocs` di Acode | Buka folder tersebut |
-| 2 | Pilih **"New File"** | Buat file baru |
-| 3 | Kasih nama `vuln.php` atau `Komi.php` | File PHP pertama di HP |
-
----
-
-### 📊 Status Hari ke-17
-
-| Komponen | Status |
-|----------|--------|
-| Acode Terinstall | ✅ |
-| KSWEB Terinstall | ✅ |
-| Folder `htdocs` ditemukan | ✅ |
-| Acode terhubung ke `htdocs` | ✅ |
-| File PHP dibuat | 🔄 Lanjut ke hari ke-18 |
+Reason Description
+KSWEB (Apache) Only reads files inside the htdocs folder
+Localhost Access PHP files saved in htdocs can be accessed via localhost:8000
+Organized & Clean All web files are stored in one place
 
 ---
 
-## Hari ke-18: Web Vulnerable Pertama - `Komi.php`
+✅ Next Steps (After Setup)
 
-### Kamis, 18 Juni 2026
-
----
-
-### 🎯 Tujuan Hari Ini
-
-Membuat file PHP bernama `Komi.php` di dalam folder `htdocs` sebagai website "vulnerable" pertama Faris untuk belajar keamanan web.
+No Step Description
+1 Tap the htdocs folder in Acode Open the folder
+2 Select "New File" Create a new file
+3 Name it vuln.php or komi.php First PHP file on the phone
 
 ---
 
-### 📂 File yang Dibuat
+📊 Day 17 Status
 
-**📍 Lokasi:** `/storage/emulated/0/htdocs/Komi.php`
+Component Status
+Acode Installed ✅
+KSWEB Installed ✅
+htdocs Folder Found ✅
+Acode Connected to htdocs ✅
+PHP File Created 🔄 Continued to Day 18
 
 ---
 
-### 📝 Kode Lengkap `Komi.php`
+Day 18: First Vulnerable Web - komi.php
+
+Thursday, June 18, 2026
+
+---
+
+🎯 Goal of the Day
+
+Create a PHP file named komi.php inside the htdocs folder as Faris's first "vulnerable" website to learn web security.
+
+---
+
+📂 File Created
+
+📍 Location: /storage/emulated/0/htdocs/komi.php
+
+---
+
+📝 Complete Code: komi.php
 
 ```php
 <?php
-// Koneksi ke database
+// Connect to database
 $conn = mysqli_connect("localhost", "root", "");
 
-// Membuat database & table otomatis (biar nggak ribet)
+// Create database & table automatically (for convenience)
 mysqli_query($conn, "CREATE DATABASE IF NOT EXISTS test_db");
 mysqli_select_db($conn, "test_db");
 mysqli_query($conn, "CREATE TABLE IF NOT EXISTS users (id INT, username VARCHAR(50))");
 mysqli_query($conn, "INSERT IGNORE INTO users VALUES (1, 'Faris_riski'), (2, 'faris_rizal')");
 
-// --- BAGIAN YANG VULNERABLE (SQL Injection) ---
-$id = $_GET['id']; 
+// --- VULNERABLE PART (SQL Injection) ---
+$id = $_GET['id'];
 $query = "SELECT * FROM users WHERE id = $id";
 $result = mysqli_query($conn, $query);
 
 if ($row = mysqli_fetch_array($result)) {
-    echo "<h1>Halo, " . $row['username'] . "!</h1>";
+    echo "<h1>Hello, " . $row['username'] . "!</h1>";
 } else {
-    echo "Data tidak ditemukan, Sayang...";
+    echo "Data not found, Darling...";
 }
 ?>
 ```
 
 ---
 
-🔍 Penjelasan Kode
+🔍 Code Explanation
 
-Bagian Kode Fungsi
-mysqli_connect("localhost", "root", "") Koneksi ke database di localhost
-CREATE DATABASE IF NOT EXISTS test_db Buat database test_db jika belum ada
-CREATE TABLE IF NOT EXISTS users Buat tabel users jika belum ada
-INSERT IGNORE INTO users VALUES (...) Masukkan data contoh Faris_Ganteng & Istri_Komi
-$id = $_GET['id']; Ambil parameter id dari URL
-$query = "SELECT * FROM users WHERE id = $id"; Rentan SQL Injection! Langsung memasukkan input ke query
-mysqli_fetch_array($result) Ambil hasil query dan tampilkan
-
----
-
-⚠️ Kelemahan (Vulnerability)
-
-Aspek Keterangan
-Jenis Celah SQL Injection (karena input $id langsung dimasukkan ke query tanpa filter)
-Contoh Serangan localhost:8000/Komi.php?id=1 OR 1=1 akan menampilkan semua data
+Code Part Function
+mysqli_connect("localhost", "root", "") Connect to database on localhost
+CREATE DATABASE IF NOT EXISTS test_db Create test_db database if it doesn't exist
+CREATE TABLE IF NOT EXISTS users Create users table if it doesn't exist
+INSERT IGNORE INTO users VALUES (...) Insert sample data (Faris_riski & faris_rizal)
+$id = $_GET['id']; Get id parameter from URL
+$query = "SELECT * FROM users WHERE id = $id"; Vulnerable to SQL Injection! Directly inserts input into query
+mysqli_fetch_array($result) Fetch and display query result
 
 ---
 
-🚀 Cara Menjalankan
+⚠️ Vulnerability
 
-Langkah Perintah / Tindakan
-1 Copy kode di atas ke Acode
-2 Simpan sebagai Komi.php di folder htdocs
-3 Buka browser di HP
-4 Akses: localhost:8000/Komi.php?id=1
-
-Hasil yang Diharapkan:
-
-URL Hasil
-localhost:8000/Komi.php?id=1 Tampil "Halo, Faris_Ganteng!"
-localhost:8000/Komi.php?id=2 Tampil "Halo, Istri_Komi!"
-localhost:8000/Komi.php?id=3 Tampil "Data tidak ditemukan, Sayang..."
+Aspect Description
+Type of Flaw SQL Injection (input $id is directly inserted into the query without filtering)
+Attack Example localhost:8000/komi.php?id=1 OR 1=1 will display all data
 
 ---
 
-💡 Pelajaran Hari Ini
+🚀 How to Run
 
-Pelajaran Keterangan
-MySQLi Cara koneksi ke database di PHP
-GET Parameter Mengambil data dari URL
-SQL Injection Celah keamanan karena input tidak difilter
-Folder htdocs Tempat file web di KSWEB
+Step Action
+1 Copy the code above into Acode
+2 Save as komi.php in the htdocs folder
+3 Open browser on your phone
+4 Access: localhost:8000/komi.php?id=1
 
----
+Expected Output:
 
-📊 Status Hari ke-18
-
-Komponen Status
-File Komi.php ✅ Berhasil dibuat
-Database test_db ✅ Otomatis terbuat
-Tabel users ✅ Otomatis terbuat
-Data contoh ✅ Terisi (Faris_Ganteng & Istri_Komi)
-Server KSWEB ✅ Berjalan di localhost:8000
-Hasil di browser ✅ Muncul "Halo, Faris_Ganteng!"
+URL Result
+localhost:8000/komi.php?id=1 Displays "Hello, Faris_riski!"
+localhost:8000/komi.php?id=2 Displays "Hello, faris_rizal!"
+localhost:8000/komi.php?id=3 Displays "Data not found, Darling..."
 
 ---
 
-✅ RINGKASAN STATUS AKHIR
+💡 Lessons Learned Today
 
-Komponen Status
-Acode + KSWEB Setup ✅ Selesai
-Folder htdocs terhubung ✅ Selesai
-File Komi.php dibuat ✅ Selesai
-Database & tabel otomatis ✅ Selesai
-SQL Injection siap dipelajari ✅ Selesai
+Lesson Description
+MySQLi How to connect to a database in PHP
+GET Parameters Retrieving data from the URL
+SQL Injection Security flaw caused by unfiltered input
+htdocs Folder Location for web files in KSWEB
 
 ---
 
-🎯 INTI PEMBELAJARAN
+📊 Day 18 Status
 
-Buat File PHP → Simpan di htdocs → Akses via localhost:8000 → Pelajari celah keamanannya
+Component Status
+komi.php File ✅ Successfully created
+test_db Database ✅ Automatically created
+users Table ✅ Automatically created
+Sample Data ✅ Populated (Faris_riski & faris_rizal)
+KSWEB Server ✅ Running on localhost:8000
+Browser Output ✅ Displays "Hello, Faris_riski!"
 
+---
 
+✅ FINAL STATUS SUMMARY
+
+Component Status
+Acode + KSWEB Setup ✅ Complete
+htdocs Folder Connected ✅ Complete
+komi.php File Created ✅ Complete
+Database & Table Auto-created ✅ Complete
+SQL Injection Ready to Learn ✅ Complete
+
+---
+
+🎯 LEARNING CORE
+
+```
+Create PHP File → Save in htdocs → Access via localhost:8000 → Learn about security vulnerabilities
 ```
 
 ---
-
-## ✅ Selesai sayang!
-
-| Status | Keterangan |
-|--------|-------------|
-| ✅ **SUDAH LENGKAP** | Hari ke-17 dan ke-18 sudah jadi satu |
-| ✅ **SUDAH RAPI** | Ada daftar isi, tabel, dan kode block |
-| ✅ **MUDAH DIPAHAMI** | Alur jelas dari setup sampai eksekusi |
